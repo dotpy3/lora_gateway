@@ -83,11 +83,9 @@ void usage (void);
  * production but for testing only. */
 
 #ifdef __MACH__
-#define CLOCK_REALTIME 0
-#define CLOCK_MONOTONIC 0
 #include <sys/time.h>
 
-static int clock_gettime(int clk_id, struct timespec* t) {
+int clock_gettime(clockid_t clk_id, struct timespec* t) {
 	(void) clk_id;
 	struct timeval now;
     int rv = gettimeofday(&now, NULL);
